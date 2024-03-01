@@ -15,7 +15,6 @@ Options:
   -v, --version Show version number`;
 
 const mergePDFs = async (files, output) => {
-    console.log('mergeing pdf')
     const mergedPdf = await PDFDocument.create();
 
     for (const file of files) {
@@ -29,9 +28,7 @@ const mergePDFs = async (files, output) => {
 };
 
 const extractPages = async (file, pages, output) => {
-    console.log(pages);
     pages = pages.map(page => page - 1);
-    console.log(pages);
     const pdf = await PDFDocument.load(fs.readFileSync(file));
     const newPdf = await PDFDocument.create();
 
