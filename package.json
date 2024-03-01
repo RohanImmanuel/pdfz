@@ -1,0 +1,15 @@
+{
+  "name": "pdfz",
+  "version": "1.0.0",
+  "description": "PDFz is a CLI tool for managing PDF files. It allows users to merge multiple PDFs into one file, extract/reorder specific pages from a PDF, and compress PDF files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["PDF","CLI", "tool"],
+  "author": "rohan_immanuel",
+  "license": "ISC",
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  }
+}
