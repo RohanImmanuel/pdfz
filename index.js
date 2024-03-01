@@ -2,13 +2,14 @@
 
 const { PDFDocument } = require('pdf-lib');
 const fs = require('fs');
+const packageInfo = require('./package.json');
+const version = packageInfo.version;
 
 const helpInfo = `
 Usage: pdfz [command] [options]
 Commands:
   merge [output] [file1] [file2]...         Merge multiple PDFs into one
   extract [output] [input] [page numbers]   Extract pages from a PDF
-  compress [output] [input]                 Compress a PDF file
 
 Options:
   -h, --help    Show help
@@ -37,13 +38,6 @@ const extractPages = async (file, pages, output) => {
 
     const newPdfBytes = await newPdf.save();
     fs.writeFileSync(output, newPdfBytes);
-};
-
-const compressPDF = async (file, output) => {
-    const pdf = await PDFDocument.load(fs.readFileSync(file));
-    pdf.embedFonts();
-    const compressedPdfBytes = await pdf.save({ useObjectStreams: true });
-    fs.writeFileSync(output, compressedPdfBytes);
 };
 
 function appendPdfExtension(str) {
@@ -75,19 +69,12 @@ const main = async () => {
         await extractPages(file, pages, output);
     }
 
-    // Example: node index.js compress output.pdf input.pdf
-    else if (commandvariations('compress').includes(args[0])) {
-        const output = appendPdfExtension(args[1]);
-        const file = appendPdfExtension(args[2]);
-        await compressPDF(file, output);
-    }
-
     else if (commandvariations('help').includes(args[0])) {
         console.log(helpInfo);
     }
 
     else if (commandvariations('version').includes(args[0])) {
-        console.log(`pdf-cli-tool version ${packageJson.version}`);
+        console.log(`pdf-cli-tool version ${version}`);
     }
 };
 
