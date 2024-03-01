@@ -1,6 +1,6 @@
 {
   "name": "pdfz",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "PDFz is a CLI tool for managing PDF files. It allows users to merge multiple PDFs into one file, extract and reorder specific pages from a PDF.",
   "main": "index.js",
   "scripts": {

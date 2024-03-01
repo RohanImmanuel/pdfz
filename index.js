@@ -54,14 +54,14 @@ function commandvariations(command) {
 const main = async () => {
     const args = process.argv.slice(2);
     
-    // Example: node index.js merge output.pdf file1.pdf file2.pdf
+    // Example: pdfz merge output.pdf file1.pdf file2.pdf
     if (commandvariations('merge').includes(args[0])) {
         const output = appendPdfExtension(args[1]);
         const files = args.slice(2).map(f => appendPdfExtension(f));
         await mergePDFs(files, output);
     }
 
-    // Example: node index.js extract output.pdf input.pdf 1 3 
+    // Example: pdfz extract output.pdf input.pdf 1 3 
     else if (commandvariations('extract').includes(args[0])) {
         const output = appendPdfExtension(args[1]);
         const file = appendPdfExtension(args[2]);
